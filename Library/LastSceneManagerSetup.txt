@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/TaaviProject/TaaviScenes/NavMeshScene.unity
+  isLoaded: 1
+  isActive: 1

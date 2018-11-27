@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff786b42bcecafc42bceff8e2fc28c5d, type: 3}
+  m_Name: TowerTwo
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 1272190390175784, guid: 9ca67bdc9bbc1714386b89afeaaf819e,
+    type: 2}
+  towerUpgraded1Prefab: {fileID: 1272190390175784, guid: 273832853426d6748a2a8c1280691538,
+    type: 2}
+  towerUpgraded2Prefab: {fileID: 1326734564589490, guid: 2f6f7471b66078340af029a270538614,
+    type: 2}
+  towerName: TowerTwo
+  upgradedState: 0
+  cost: 400
+  upgrade1Cost: 600
+  upgrade2Cost: 800

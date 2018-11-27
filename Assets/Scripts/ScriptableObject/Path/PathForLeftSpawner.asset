@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eda1a8a9672072499069dac8460c39d, type: 3}
+  m_Name: PathForLeftSpawner
+  m_EditorClassIdentifier: 
+  index: 0
+  positions:
+  - {x: -38.4, y: 1, z: -15.5}
+  - {x: -38.4, y: 1, z: 32.8}
+  - {x: 15.1, y: 1, z: 32.8}
+  - {x: 15.1, y: 1, z: 8.6}
+  - {x: -17.4, y: 1, z: 8.6}
+  - {x: -17.4, y: 1, z: -39.7}
+  - {x: 15.2, y: 1, z: -39.7}
+  - {x: 15.2, y: 1, z: -31.2}
+  - {x: 47.2, y: 1, z: -31.2}
+  spawnPoint: {x: -50, y: 1, z: -15.5}
