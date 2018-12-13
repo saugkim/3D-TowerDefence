@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyKim : MonoBehaviour
 {
@@ -10,8 +11,20 @@ public class EnemyKim : MonoBehaviour
 
     Vector3 originPosition;
 
-    public float health = 100;
+    public float maxHealth;
     public int rewardGold = 250;
+
+    [SerializeField]
+    float offset;
+
+    public Slider HealthFiller;
+
+    float currentHealth;
+
+    Image image;
+
+    [SerializeField]
+    GameObject imageObject;
 
     Vector3 targetPoint;
     
@@ -27,6 +40,11 @@ public class EnemyKim : MonoBehaviour
 
 	void Start ()
     {
+        currentHealth = maxHealth;
+
+        image = imageObject.GetComponent<Image>();
+        image.color = new Color(0, 1f, 0.06f);
+
         spawner1 = GameObject.FindGameObjectWithTag("sp1");
         spawner2 = GameObject.FindGameObjectWithTag("sp2");
         originPosition = transform.position;
@@ -45,19 +63,45 @@ public class EnemyKim : MonoBehaviour
             tempIndex = pathFinder[1].index;
             targetPoint = pathFinder[1].positions[0];
         }
+
+        HealthFiller.maxValue = maxHealth;
     }
-	
+
+    private void HealthBarUpdate()
+    {
+      
+        HealthFiller.value = currentHealth;
+
+        float health = currentHealth / maxHealth;
+
+        if (health >= 0.25 && health < 0.60)
+        {
+            image.color = Color.yellow;
+        }
+        else if (health < 0.25)
+        {
+            image.color = Color.red;
+        }
+
+        if (currentHealth <= 0)
+        {
+            
+        }
+    }
+
+
     public void TakeDamage(float amount)
     {
-        health -= amount;
+        
+        currentHealth -= amount;
 
-        if(health <= 0)
+        if(currentHealth <= 0)
         {
             Die();
         }
     }
 
-    void Die()
+    public void Die()
     {
         Destroy(gameObject);
         GameManagement.currentGold += rewardGold;
@@ -65,19 +109,23 @@ public class EnemyKim : MonoBehaviour
 
 	void Update () 
     {
+        HealthBarUpdate();
+        //Debug.Log(currentHealth);
         Vector3 directionToMove = targetPoint - transform.position;
 
         transform.Translate(directionToMove.normalized * movementSpeed * Time.deltaTime, Space.World);
         Quaternion rot = Quaternion.LookRotation(directionToMove);
         transform.rotation = rot;
 
-        if (Vector3.Distance(transform.position, targetPoint) <= 0.2f)
+        if (Vector3.Distance(transform.position, targetPoint) <= offset)
         {
             GetNextTargetPoint(tempIndex);
         }
 
         movementSpeed = startSpeed;
-	}
+
+        
+    }
 
     private void GetNextTargetPoint(int index)
     {

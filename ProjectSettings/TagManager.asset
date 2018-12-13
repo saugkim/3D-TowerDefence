@@ -10,6 +10,9 @@ TagManager:
   - sp2
   - target1
   - target2
+  - builderTaavi
+  - TaaviEnemy
+  - TaaviBullet
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - menubackground
   - 
   - 
   - 

@@ -55,6 +55,7 @@ public class Tower : MonoBehaviour
         {
             SlowRangeAttack();
         }
+
         else
         {
             if (fireCountDown <= 0f)
@@ -77,10 +78,9 @@ public class Tower : MonoBehaviour
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
-
     void SlowRangeAttack()
     {
-        
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, slowAttackRange);
 
         foreach (var item in colliders)
@@ -92,7 +92,23 @@ public class Tower : MonoBehaviour
         }
     }
 
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy")
+        {
+            other.transform.parent.GetComponent<EnemyMovement>().SlowDown(slowFactor);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            other.transform.parent.GetComponent<EnemyMovement>().SlowDown(1);
+        }
+    }
+
     private void ShootAttack()
     {
         GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

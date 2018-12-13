@@ -27,11 +27,19 @@ public class GameUIControl : MonoBehaviour
     [SerializeField]
     GameObject GamePausePanel;
     [SerializeField]
-    Button restartButton;
+    Button restartButtonGO;
     [SerializeField]
-    Button quitButton;
+    Button restartButtonP;
     [SerializeField]
-    Button menuButton;
+    Button quitButtonGO;
+    [SerializeField]
+    Button quitButtonP;
+
+    [SerializeField]
+    Button menuButtonGO;
+    [SerializeField]
+    Button menuButtonP;
+
     [SerializeField]
     Button resumeButton;
     [SerializeField]
@@ -59,9 +67,15 @@ public class GameUIControl : MonoBehaviour
         GamePausePanel.SetActive(false);
         upgradeControlPanel.SetActive(false);
 
-        restartButton.onClick.AddListener(RestartGame);
-        quitButton.onClick.AddListener(QuitGame);
-        menuButton.onClick.AddListener(GoToMenuScene);
+        restartButtonGO.onClick.AddListener(RestartGame);
+        restartButtonP.onClick.AddListener(RestartGame);
+
+        quitButtonGO.onClick.AddListener(QuitGame);
+        quitButtonP.onClick.AddListener(QuitGame);
+
+        menuButtonGO.onClick.AddListener(GoToMenuScene);
+        menuButtonP.onClick.AddListener(GoToMenuScene);
+
         pauseButton.onClick.AddListener(PauseGame);
         resumeButton.onClick.AddListener(ResumeGame);
 

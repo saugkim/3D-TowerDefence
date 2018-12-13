@@ -37,19 +37,22 @@ public class EnemySpawnerKim : MonoBehaviour
     {
         yield return new WaitForSeconds(waitInfiniteEnemyWave);
 
-        waveRandomSize = UnityEngine.Random.Range(minRandomSize, maxRandomSize);
-        for (int i = 0; i < waveRandomSize; i++)
+        while(true)
         {
-            randomEnemyIndex = UnityEngine.Random.Range(0, 3);
-            SpawnEnemy(enemyPrefabs[randomEnemyIndex]);
+            waveRandomSize = UnityEngine.Random.Range(minRandomSize, maxRandomSize);
+            for (int i = 0; i < waveRandomSize; i++)
+            {
+                randomEnemyIndex = UnityEngine.Random.Range(0, 3);
+                SpawnEnemy(enemyPrefabs[randomEnemyIndex]);
 
-            yield return new WaitForSeconds(1f/spawnRate);
+                yield return new WaitForSeconds(1f / spawnRate);
+            }
+            minRandomSize++;
+            maxRandomSize++;
+
+            yield return new WaitForSeconds(waveInterval);
+            waveInterval *= 0.98f;
         }
-        minRandomSize++;
-        maxRandomSize++;
-
-        yield return new WaitForSeconds(waveInterval);
-        waveInterval *= 0.98f;
     }
 
     IEnumerator SpawnWave()
